@@ -19,14 +19,21 @@ class House:
         return self.number_of_floors == other.number_of_floors
 
     def __add__(self, value):
-        if isinstance(value, int):
-            self.number_of_floors+=value
-            return self
+        if isinstance(value, House):
+          self.number_of_floors += value.number_of_floors
+        elif isinstance(value, int):
+          self.number_of_floors += value
+          return self
+        #if isinstance(value, int):
+            #self.number_of_floors+=value
+            #return self
+    def __radd__(self, other):
+          return self.__add__(other)
 
-    def __radd__(self, value):
-        if isinstance(value, int):
-            self.number_of_floors += value
-            return self
+    #def __radd__(self, value):
+        #if isinstance(value, int):
+            #self.number_of_floors += value
+            #return self
 
     def __iadd__(self, value):
         if isinstance(value, int):
